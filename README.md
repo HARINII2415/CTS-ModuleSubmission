@@ -70,7 +70,7 @@ project/
 
 - Add AOS animation
 - Improve responsive layout with media queries
-- Host via GitHub Pages or Netlify
+
 
 ---
 
