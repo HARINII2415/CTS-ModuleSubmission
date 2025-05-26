@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage & APIs Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .demo-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="storage.html">Storage Demo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Web Storage & APIs Demo</h1>
+
+        <!-- LocalStorage Demo -->
+        <section class="demo-section">
+            <h2>Local Notes for user prefrences</h2>
+            <div>
+                <input type="text" id="storageKey" placeholder="Key">
+                <input type="text" id="storageValue" placeholder="Value">
+                <button onclick="saveToLocalStorage()">Save to LocalStorage</button>
+                <button onclick="getFromLocalStorage()">Get from LocalStorage</button>
+                <button onclick="clearLocalStorage()">Clear LocalStorage</button>
+            </div>
+            <div id="localStorageResult" class="result"></div>
+        </section>
+
+        <!-- Geolocation Demo -->
+        <section class="demo-section">
+            <h2>Geolocation</h2>
+            <button onclick="getLocation()">Get My Location</button>
+            <div id="geolocationResult" class="result"></div>
+        </section>
+
+        <!-- Web SQL Demo -->
+        <section class="demo-section">
+            <h2>Web SQL Demo</h2>
+            <div>
+                <input type="text" id="noteTitle" placeholder="Note Title">
+                <input type="text" id="noteContent" placeholder="Note Content">
+                <button onclick="addNote()">Add Note</button>
+                <button onclick="getAllNotes()">Show All Notes</button>
+            </div>
+            <div id="webSqlResult" class="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Project Bolt. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // LocalStorage Functions
+        function saveToLocalStorage() {
+            const key = document.getElementById('storageKey').value;
+            const value = document.getElementById('storageValue').value;
+            if (key && value) {
+                localStorage.setItem(key, value);
+                document.getElementById('localStorageResult').textContent = `Saved: ${key} = ${value}`;
+            }
+        }
+
+        function getFromLocalStorage() {
+            const key = document.getElementById('storageKey').value;
+            if (key) {
+                const value = localStorage.getItem(key);
+                document.getElementById('localStorageResult').textContent = 
+                    value ? `Retrieved: ${key} = ${value}` : `No value found for key: ${key}`;
+            }
+        }
+
+        function clearLocalStorage() {
+            localStorage.clear();
+            document.getElementById('localStorageResult').textContent = 'LocalStorage cleared';
+        }
+
+        // Geolocation Functions
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const result = `Latitude: ${position.coords.latitude}<br>
+                                      Longitude: ${position.coords.longitude}<br>
+                                      Accuracy: ${position.coords.accuracy} meters`;
+                        document.getElementById('geolocationResult').innerHTML = result;
+                    },
+                    (error) => {
+                        document.getElementById('geolocationResult').textContent = 
+                            `Error: ${error.message}`;
+                    }
+                );
+            } else {
+                document.getElementById('geolocationResult').textContent = 
+                    'Geolocation is not supported by this browser.';
+            }
+        }
+
+        // Web SQL Functions
+        let db;
+
+        function initDB() {
+            if (!db) {
+                db = openDatabase('NotesDB', '1.0', 'Notes Database', 2 * 1024 * 1024);
+                db.transaction(function(tx) {
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)');
+                });
+            }
+        }
+
+        function addNote() {
+            initDB();
+            const title = document.getElementById('noteTitle').value;
+            const content = document.getElementById('noteContent').value;
+            
+            if (title && content) {
+                db.transaction(function(tx) {
+                    tx.executeSql('INSERT INTO notes (title, content) VALUES (?, ?)', 
+                        [title, content],
+                        function() {
+                            document.getElementById('webSqlResult').textContent = 'Note added successfully!';
+                            getAllNotes();
+                        },
+                        function(error) {
+                            document.getElementById('webSqlResult').textContent = 
+                                'Error adding note: ' + error.message;
+                        }
+                    );
+                });
+            }
+        }
+
+        function getAllNotes() {
+            initDB();
+            db.transaction(function(tx) {
+                tx.executeSql('SELECT * FROM notes', [], function(tx, results) {
+                    let html = '<h3>All Notes:</h3>';
+                    for (let i = 0; i < results.rows.length; i++) {
+                        const note = results.rows.item(i);
+                        html += `<p><strong>${note.title}:</strong> ${note.content}</p>`;
+                    }
+                    document.getElementById('webSqlResult').innerHTML = html;
+                });
+            });
+        }
+
+        // Initialize Web SQL when page loads
+        window.onload = initDB;
+    </script>
+</body>
+</html> 
