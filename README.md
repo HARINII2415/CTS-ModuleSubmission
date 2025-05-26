@@ -1,6 +1,4 @@
-# Let's create an overall README for Module 1, 2, and 3 summary
 
-overall_readme = """
 # 🌟 CTS Digital Nurture 4.0 – Java FSE Track (Modules 1, 2, 3)
 
 Hi! I'm **Harini A**, a B.Tech IT student passionate about full stack development.  
