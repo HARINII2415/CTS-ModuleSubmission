@@ -7,3 +7,4 @@
     "dev": "vite",
     "build": "vite build && cp events.html dist/ && cp about.html dist/ && cp register.html dist/ && cp contact.html dist/",
     "
+  }
