@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events -  Eventryx</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .hero-section {
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <i class="bi bi-calendar-event"></i>
+      <a class="navbar-brand" href="index.html">Eventryx</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="events.html">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="register.html">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section-small">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="display-4 text-white mb-4">Upcoming Events</h1>
+        <p class="lead text-white">Discover and join exciting events in your community</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="py-5">
+    <div class="container">
+      <!-- Search and Filters -->
+      <div class="event-filters mb-4">
+        <div class="d-flex flex-wrap gap-3">
+          <input type="text" class="form-control" placeholder="Search events...">
+          <select class="form-select" style="max-width: 200px;">
+            <option value="">All Categories</option>
+            <option value="music">Music</option>
+            <option value="art">Art</option>
+            <option value="food">Food</option>
+            <option value="sports">Sports</option>
+          </select>
+          <input type="date" class="form-control" style="max-width: 200px;">
+          <button class="btn btn-primary">Filter</button>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="events-container">
+        <!-- Event Card 1 -->
+        <div class="event-card">
+          <img src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg" class="card-img-top" alt="Summer Music Festival">
+          <div class="card-body">
+            <span class="badge bg-primary mb-2">Music</span>
+            <h5 class="card-title">Summer Music Festival</h5>
+            <p class="card-text">Join us for a day of amazing music, food, and fun activities.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">June 15, 2024</small>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal1">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Card 2 -->
+        <div class="event-card">
+          <img src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg" class="card-img-top" alt="Art Workshop">
+          <div class="card-body">
+            <span class="badge bg-success mb-2">Art</span>
+            <h5 class="card-title">Art Workshop</h5>
+            <p class="card-text">Learn new painting techniques from professional artists.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">June 20, 2024</small>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal2">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Card 3 -->
+        <div class="event-card">
+          <img src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg" class="card-img-top" alt="Food Festival">
+          <div class="card-body">
+            <span class="badge bg-warning mb-2">Food</span>
+            <h5 class="card-title">Food Festival</h5>
+            <p class="card-text">Taste delicious cuisines from around the world.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">June 25, 2024</small>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal3">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination (real, dynamic) -->
+      <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" id="prevPageBtn">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+          <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+          <li class="page-item" id="nextPageBtn">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+
+      <script>
+      // Example event data for 3 pages (flattened for filtering)
+      const allEvents = [
+        {
+          img: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
+          category: 'Music',
+          badge: 'bg-primary',
+          title: 'Summer Music Festival',
+          desc: 'Join us for a day of amazing music, food, and fun activities.',
+          date: '2024-06-15',
+          modal: '#eventModal1'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+          category: 'Art',
+          badge: 'bg-success',
+          title: 'Art Workshop',
+          desc: 'Learn new painting techniques from professional artists.',
+          date: '2024-06-20',
+          modal: '#eventModal2'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
+          category: 'Food',
+          badge: 'bg-warning',
+          title: 'Food Festival',
+          desc: 'Taste delicious cuisines from around the world.',
+          date: '2024-06-25',
+          modal: '#eventModal3'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80',
+          category: 'Sports',
+          badge: 'bg-danger',
+          title: 'Community Sports Day',
+          desc: 'Participate in fun games and sports for all ages.',
+          date: '2024-07-02',
+          modal: '#eventModal4'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+          category: 'Tech',
+          badge: 'bg-info',
+          title: 'Tech Expo',
+          desc: 'Explore the latest in technology and innovation.',
+          date: '2024-07-10',
+          modal: '#eventModal5'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+          category: 'Charity',
+          badge: 'bg-secondary',
+          title: 'Charity Run',
+          desc: 'Run for a cause and help raise funds for charity.',
+          date: '2024-07-18',
+          modal: '#eventModal6'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80',
+          category: 'Culture',
+          badge: 'bg-dark',
+          title: 'Cultural Night',
+          desc: 'Experience music, dance, and food from around the world.',
+          date: '2024-08-01',
+          modal: '#eventModal7'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
+          category: 'Workshop',
+          badge: 'bg-primary',
+          title: 'Photography Workshop',
+          desc: 'Learn photography from professionals and improve your skills.',
+          date: '2024-08-10',
+          modal: '#eventModal8'
+        },
+        {
+          img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+          category: 'Food',
+          badge: 'bg-warning',
+          title: 'Street Food Carnival',
+          desc: 'Enjoy a variety of street food and live performances.',
+          date: '2024-08-18',
+          modal: '#eventModal9'
+        }
+      ];
+
+      const eventsPerPage = 3;
+      let filteredEvents = [...allEvents];
+      let currentPage = 1;
+
+      const eventsContainer = document.querySelector('.events-container');
+      const paginationLinks = document.querySelectorAll('.pagination .page-link[data-page]');
+      const prevBtn = document.getElementById('prevPageBtn');
+      const nextBtn = document.getElementById('nextPageBtn');
+      const filterBtn = document.querySelector('.event-filters .btn');
+      const searchInput = document.querySelector('.event-filters input[type="text"]');
+      const categorySelect = document.querySelector('.event-filters select');
+      const dateInput = document.querySelector('.event-filters input[type="date"]');
+
+      function renderEvents(page) {
+        eventsContainer.innerHTML = '';
+        const start = (page - 1) * eventsPerPage;
+        const end = start + eventsPerPage;
+        const pageEvents = filteredEvents.slice(start, end);
+        if (pageEvents.length === 0) {
+          eventsContainer.innerHTML = '<div class="text-center w-100 py-5"><h5>No events found.</h5></div>';
+        } else {
+          pageEvents.forEach(event => {
+            eventsContainer.innerHTML += `
+              <div class="event-card">
+                <img src="${event.img}" class="card-img-top" alt="${event.title}">
+                <div class="card-body">
+                  <span class="badge ${event.badge} mb-2">${event.category}</span>
+                  <h5 class="card-title">${event.title}</h5>
+                  <p class="card-text">${event.desc}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">${formatDate(event.date)}</small>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="${event.modal}">View Details</button>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+        }
+        // Update pagination active state
+        paginationLinks.forEach(link => link.parentElement.classList.remove('active'));
+        const pageIndex = Math.max(0, Math.min(Math.ceil(filteredEvents.length / eventsPerPage), page) - 1);
+        if (paginationLinks[pageIndex]) paginationLinks[pageIndex].parentElement.classList.add('active');
+        // Disable prev/next if at ends
+        prevBtn.classList.toggle('disabled', page === 1);
+        nextBtn.classList.toggle('disabled', page === Math.ceil(filteredEvents.length / eventsPerPage));
+      }
+
+      function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+
+      function applyFilters() {
+        const search = searchInput.value.trim().toLowerCase();
+        const category = categorySelect.value;
+        const date = dateInput.value;
+        filteredEvents = allEvents.filter(event => {
+          const matchesSearch =
+            event.title.toLowerCase().includes(search) ||
+            event.desc.toLowerCase().includes(search);
+          const matchesCategory = !category || event.category.toLowerCase() === category.toLowerCase();
+          const matchesDate = !date || event.date === date;
+          return matchesSearch && matchesCategory && matchesDate;
+        });
+        currentPage = 1;
+        renderEvents(currentPage);
+      }
+
+      filterBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        applyFilters();
+      });
+
+      paginationLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = parseInt(this.getAttribute('data-page'));
+          if (!isNaN(page)) {
+            currentPage = page;
+            renderEvents(currentPage);
+          }
+        });
+      });
+      prevBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+          currentPage--;
+          renderEvents(currentPage);
+        }
+      });
+      nextBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentPage < Math.ceil(filteredEvents.length / eventsPerPage)) {
+          currentPage++;
+          renderEvents(currentPage);
+        }
+      });
+      // Initial render
+      renderEvents(currentPage);
+      </script>
+    </div>
+  </section>
+
+  <!-- Event Modal 1 -->
+  <div class="modal fade" id="eventModal1" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Summer Music Festival</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg" class="img-fluid rounded mb-4" alt="Summer Music Festival">
+          <h6>Event Details</h6>
+          <p>Join us for an unforgettable day of music, food, and fun activities. The festival will feature:</p>
+          <ul>
+            <li>Live performances from top artists</li>
+            <li>Food trucks and beverage stations</li>
+            <li>Art installations and interactive exhibits</li>
+            <li>Family-friendly activities</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>June 15, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Central Park, New York</p>
+            </div>
+            <button class="btn btn-primary " onclick.href="register.html">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Modal 2 -->
+  <div class="modal fade" id="eventModal2" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Art Workshop</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Art Workshop">
+          <h6>Event Details</h6>
+          <p>Learn new painting techniques from professional artists. All skill levels welcome!</p>
+          <ul>
+            <li>Hands-on sessions</li>
+            <li>All materials provided</li>
+            <li>Meet local artists</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>June 20, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Art Center</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Modal 3 -->
+  <div class="modal fade" id="eventModal3" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Food Festival</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Food Festival">
+          <h6>Event Details</h6>
+          <p>Taste delicious cuisines from around the world. Enjoy live cooking demos and food stalls!</p>
+          <ul>
+            <li>International food stalls</li>
+            <li>Live cooking demonstrations</li>
+            <li>Family-friendly activities</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>June 25, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>City Square</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Modal 4 -->
+  <div class="modal fade" id="eventModal4" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Community Sports Day</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Community Sports Day">
+          <h6>Event Details</h6>
+          <p>Participate in fun games and sports for all ages. Enjoy a day of friendly competition and community spirit!</p>
+          <ul>
+            <li>Team games and individual sports</li>
+            <li>Prizes for winners</li>
+            <li>Snacks and refreshments</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>July 2, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Community Grounds</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Event Modal 5 -->
+  <div class="modal fade" id="eventModal5" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tech Expo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Tech Expo">
+          <h6>Event Details</h6>
+          <p>Explore the latest in technology and innovation. Meet industry leaders and see new products in action.</p>
+          <ul>
+            <li>Tech talks and workshops</li>
+            <li>Product demos</li>
+            <li>Networking opportunities</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>July 10, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Expo Center</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Event Modal 6 -->
+  <div class="modal fade" id="eventModal6" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Charity Run</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Charity Run">
+          <h6>Event Details</h6>
+          <p>Run for a cause and help raise funds for charity. All ages and abilities welcome!</p>
+          <ul>
+            <li>5K and 10K routes</li>
+            <li>Charity fundraising</li>
+            <li>Medals for all finishers</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>July 18, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>City Park</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Event Modal 7 -->
+  <div class="modal fade" id="eventModal7" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cultural Night</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Cultural Night">
+          <h6>Event Details</h6>
+          <p>Experience music, dance, and food from around the world. Celebrate diversity and culture!</p>
+          <ul>
+            <li>Live performances</li>
+            <li>International cuisine</li>
+            <li>Art and crafts</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>August 1, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Community Hall</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Event Modal 8 -->
+  <div class="modal fade" id="eventModal8" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Photography Workshop</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Photography Workshop">
+          <h6>Event Details</h6>
+          <p>Learn photography from professionals and improve your skills. Bring your own camera!</p>
+          <ul>
+            <li>Hands-on sessions</li>
+            <li>Photo walks</li>
+            <li>Editing tips</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>August 10, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Studio 5</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Event Modal 9 -->
+  <div class="modal fade" id="eventModal9" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Street Food Carnival</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded mb-4" alt="Street Food Carnival">
+          <h6>Event Details</h6>
+          <p>Enjoy a variety of street food and live performances. Fun for the whole family!</p>
+          <ul>
+            <li>Food stalls</li>
+            <li>Live music</li>
+            <li>Games and prizes</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <p class="mb-0"><i class="fas fa-calendar me-2"></i>August 18, 2024</p>
+              <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Main Street</p>
+            </div>
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <h4 class="text-white"><i class="bi bi-calendar-event"></i>  Eventryx</h4>
+          <p>Connecting communities through local events since 2023.</p>
+          <div class="social-icons">
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+        </div></div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="text-white">Navigation</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="index.html" class="nav-link p-0 text-white-50">Home</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link p-0 text-white-50">Events</a></li>
+            <li class="nav-item"><a href="gallery.html" class="nav-link p-0 text-white-50">Gallery</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link p-0 text-white-50">About</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="text-white">Events</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Festivals</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Workshops</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Meetups</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Performances</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="text-white">Newsletter</h5>
+          <p>Subscribe for updates on upcoming events.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2 rounded-pill shadow-sm" placeholder="Your email">
+            <button class="btn btn-primary rounded-pill shadow-sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0 text-white-50">&copy; 2025 Eventryx. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="list-inline mb-0 small">
+            <li class="list-inline-item"><a href="#" class="text-white-50">Privacy Policy</a></li>
+            <li class="list-inline-item">|</li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+     
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html> 
