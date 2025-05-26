@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - EventPulse</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Section -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark shadow-lg" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+          <i class="bi bi-calendar-event"></i> EventPulse
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="register.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <button id="nearby-events-btn" class="btn btn-outline-light ms-lg-3 rounded-pill shadow-sm">
+                <i class="bi bi-geo-alt-fill"></i> Nearby Events
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Register Hero Section -->
+  <section class="hero-section-small">
+    <div class="container">
+      <div class="row min-vh-50 align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-4 fw-bold text-white mb-4">Register for Events</h1>
+          <p class="lead text-white mb-5">Join our community and be part of exciting events</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Section -->
+  <section id="register" class="py-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4 p-md-5">
+              <form id="registration-form" class="needs-validation" novalidate>
+                <!-- Personal Information -->
+                <div class="mb-4">
+                  <h3 class="h4 mb-3">Personal Information</h3>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                        <label for="firstName">First Name</label>
+                        <div class="invalid-feedback">Please enter your first name.</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                        <label for="lastName">Last Name</label>
+                        <div class="invalid-feedback">Please enter your last name.</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="email" class="form-control" id="email" placeholder="Email" required>
+                        <label for="email">Email</label>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                        <label for="phone">Phone Number</label>
+                        <div class="invalid-feedback">Please enter your phone number.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event Selection -->
+                <div class="mb-4">
+                  <h3 class="h4 mb-3">Event Selection</h3>
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="event" required>
+                      <option value="">Select an event</option>
+                      <option value="music-festival">Summer Music Festival</option>
+                      <option value="art-workshop">Art Workshop</option>
+                      <option value="food-festival">Food Festival</option>
+                    </select>
+                    <label for="event">Choose Event</label>
+                    <div class="invalid-feedback">Please select an event.</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="tickets" placeholder="Number of Tickets" min="1" required>
+                    <label for="tickets">Number of Tickets</label>
+                    <div class="invalid-feedback">Please enter the number of tickets.</div>
+                  </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="mb-4">
+                  <h3 class="h4 mb-3">Additional Information</h3>
+                  <div class="form-floating mb-3">
+                    <textarea class="form-control" id="additionalInfo" placeholder="Additional Information" style="height: 100px"></textarea>
+                    <label for="additionalInfo">Additional Information</label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                    <label class="form-check-label" for="newsletter">
+                      Subscribe to our newsletter for updates
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                      I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>
+                    </label>
+                    <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm">
+                    Complete Registration
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms Modal -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>1. Registration and Participation</h6>
+          <p>By registering for an event, you agree to provide accurate information and comply with all event rules and regulations.</p>
+          
+          <h6>2. Payment and Refunds</h6>
+          <p>All payments are non-refundable unless the event is cancelled by the organizers. In case of cancellation, full refunds will be provided.</p>
+          
+          <h6>3. Privacy Policy</h6>
+          <p>We respect your privacy and will only use your information for event-related communications and updates.</p>
+          
+          <h6>4. Code of Conduct</h6>
+          <p>Participants are expected to maintain appropriate behavior and respect other attendees and staff members.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">I Agree</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <h4 class="text-white"><i class="bi bi-calendar-event"></i> EventPulse</h4>
+          <p>Connecting communities through local events since 2023.</p>
+          <div class="social-icons">
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="text-white">Navigation</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="index.html" class="nav-link p-0 text-white-50">Home</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link p-0 text-white-50">Events</a></li>
+            <li class="nav-item"><a href="gallery.html" class="nav-link p-0 text-white-50">Gallery</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link p-0 text-white-50">About</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="text-white">Events</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Festivals</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Workshops</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Meetups</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Performances</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="text-white">Newsletter</h5>
+          <p>Subscribe for updates on upcoming events.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2 rounded-pill shadow-sm" placeholder="Your email">
+            <button class="btn btn-primary rounded-pill shadow-sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0 text-white-50">&copy; 2023 EventPulse. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="list-inline mb-0 small">
+            <li class="list-inline-item"><a href="#" class="text-white-50">Privacy Policy</a></li>
+            <li class="list-inline-item">|</li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html> 

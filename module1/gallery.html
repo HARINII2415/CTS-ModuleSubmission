@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery -  Eventryx</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Section -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark shadow-lg" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+          
+        <i class="bi bi-calendar-event"></i>  Eventryx
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <button id="nearby-events-btn" class="btn btn-outline-light ms-lg-3 rounded-pill shadow-sm">
+                <i class="bi bi-geo-alt-fill"></i> Nearby Events
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Gallery Hero Section -->
+  <section class="hero-section-small">
+    <div class="container">
+      <div class="row min-vh-50 align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-4 fw-bold text-white mb-4">Event Gallery</h1>
+          <p class="lead text-white mb-5">Explore moments from our past events</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-5 bg-light">
+    <div class="container">
+      <!-- Filter Buttons -->
+      <div class="text-center mb-5">
+        <div class="btn-group" role="group" aria-label="Gallery filters">
+          <button type="button" class="btn btn-outline-primary active rounded-pill px-4">All</button>
+          <button type="button" class="btn btn-outline-primary rounded-pill px-4">Music</button>
+          <button type="button" class="btn btn-outline-primary rounded-pill px-4">Art</button>
+          <button type="button" class="btn btn-outline-primary rounded-pill px-4">Food</button>
+          <button type="button" class="btn btn-outline-primary rounded-pill px-4">Workshops</button>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="row g-4" id="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="music">
+          <div class="card border-0 shadow-sm">
+            <div class="position-relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Gallery Image 1">
+              <div class="gallery-overlay">
+                <div class="gallery-info">
+                  <h5>Summer Music Festival 2023</h5>
+                  <p>June 15, 2023</p>
+                  <button class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                    <i class="bi bi-zoom-in"></i> View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="art">
+          <div class="card border-0 shadow-sm">
+            <div class="position-relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Gallery Image 2">
+              <div class="gallery-overlay">
+                <div class="gallery-info">
+                  <h5>Art Exhibition</h5>
+                  <p>May 20, 2023</p>
+                  <button class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                    <i class="bi bi-zoom-in"></i> View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="food">
+          <div class="card border-0 shadow-sm">
+            <div class="position-relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Gallery Image 3">
+              <div class="gallery-overlay">
+                <div class="gallery-info">
+                  <h5>Food Festival</h5>
+                  <p>April 10, 2023</p>
+                  <button class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                    <i class="bi bi-zoom-in"></i> View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more gallery items as needed -->
+      </div>
+
+      <!-- Load More Button -->
+      <div class="text-center mt-5">
+        <button class="btn btn-primary btn-lg rounded-pill shadow-sm">
+          Load More
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Modal -->
+  <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="galleryModalLabel">Gallery Image</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="img-fluid" alt="Gallery Image">
+          <div class="p-4">
+            <h4>Summer Music Festival 2023</h4>
+            <p class="text-muted">June 15, 2023</p>
+            <p>Capturing the vibrant atmosphere of our annual music festival, featuring local and international artists.</p>
+            <div class="d-flex gap-2">
+              <span class="badge bg-primary">Music</span>
+              <span class="badge bg-secondary">Festival</span>
+              <span class="badge bg-info">Outdoor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <h4 class="text-white"><i class="bi bi-calendar-event"></i> Eventryx</h4>
+          <p>Connecting communities through local events since 2023.</p>
+          <div class="social-icons">
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" target="_blank" class="me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="text-white">Navigation</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="index.html" class="nav-link p-0 text-white-50">Home</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link p-0 text-white-50">Events</a></li>
+            <li class="nav-item"><a href="gallery.html" class="nav-link p-0 text-white-50">Gallery</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link p-0 text-white-50">About</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="text-white">Events</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Festivals</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Workshops</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Meetups</a></li>
+            <li class="nav-item"><a href="#" class="nav-link p-0 text-white-50">Performances</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="text-white">Newsletter</h5>
+          <p>Subscribe for updates on upcoming events.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2 rounded-pill shadow-sm" placeholder="Your email">
+            <button class="btn btn-primary rounded-pill shadow-sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small mb-0 text-white-50">&copy; 2025 Eventryx. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="list-inline mb-0 small">
+            <li class="list-inline-item"><a href="#" class="text-white-50">Privacy Policy</a></li>
+            <li class="list-inline-item">|</li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script type="module" src="js/main.js"></script>
+  <script>
+  // Gallery filter functionality
+  const filterButtons = document.querySelectorAll('.btn-group .btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.textContent.trim().toLowerCase();
+      galleryItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category').toLowerCase() === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Gallery modal dynamic content
+  const galleryModal = document.getElementById('galleryModal');
+  const galleryModalImg = galleryModal.querySelector('.modal-body img');
+  const galleryModalTitle = galleryModal.querySelector('.modal-title');
+  const galleryModalDesc = galleryModal.querySelector('.modal-body h4');
+  const galleryModalDate = galleryModal.querySelector('.modal-body .text-muted');
+  const galleryModalText = galleryModal.querySelector('.modal-body p:not(.text-muted)');
+
+  // Data for gallery items
+  const galleryData = [
+    {
+      img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+      title: 'Summer Music Festival 2023',
+      date: 'June 15, 2023',
+      desc: 'Capturing the vibrant atmosphere of our annual music festival, featuring local and international artists.',
+      category: 'music'
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+      title: 'Art Exhibition',
+      date: 'May 20, 2023',
+      desc: 'A showcase of stunning artworks from talented local artists.',
+      category: 'art'
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
+      title: 'Food Festival',
+      date: 'April 10, 2023',
+      desc: 'Experience a world of flavors at our food festival, with cuisines from around the globe.',
+      category: 'food'
+    }
+  ];
+
+  // Attach click event to each View button
+  const viewButtons = document.querySelectorAll('.gallery-item .btn[data-bs-target="#galleryModal"]');
+  viewButtons.forEach((btn, idx) => {
+    btn.addEventListener('click', function() {
+      const data = galleryData[idx];
+      galleryModalImg.src = data.img;
+      galleryModalImg.alt = data.title;
+      galleryModalTitle.textContent = 'Gallery Image';
+      galleryModalDesc.textContent = data.title;
+      galleryModalDate.textContent = data.date;
+      galleryModalText.textContent = data.desc;
+    });
+  });
+  </script>
+</body>
+</html> 
